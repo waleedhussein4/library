@@ -15,30 +15,40 @@ const addRemoveListener = function(button) {
     removeBook(button.id);
   });
 }
+
+const addReadListener = function(button) {
+  button.addEventListener('click', function () {
+    toggleRead(button);
+  })
+}
 // LISTENERS
 
 
 
-// OBJECTS
+// FUNCTIONS
 function Book (title, author) {
 
   this.title = title;
   this.author = author;
   this.id = index++;
+  this.read = false;
 
 }
 
-Book.prototype.read = false;
-// OBJECTS
+Book.prototype.store = function () {
+  library[this.id] = this;
+  createBookElement(this);
+  console.log(library);
+};
 
 
-
-// FUNCTIONS
 const generateBook = function () {
   let title = prompt("Enter TITLE");
   let author = prompt("Enter AUTHOR");
   let book = new Book(title, author);
   addBookToLibrary(book);
+
+  // book.store.call();
 };
 
 function addBookToLibrary (book) {
@@ -57,6 +67,7 @@ const createBookElement = function (book) {
   const div = document.createElement('div');
   div.className = 'book';
   div.id = 'book-' + book.id;
+  div.dataset.read = 'false';
 
   // create title paragraph
   const titleElement = document.createElement('p');
@@ -85,6 +96,7 @@ const createBookElement = function (book) {
   readElement.id = book.id;
   readElement.classList.add('read');
   readElement.innerText = 'NOT READ';
+  addReadListener(readElement);
 
   div.appendChild(titleElement);
   div.appendChild(authorElement);
@@ -103,6 +115,18 @@ const removeBook = function (id) {
   // remove the book from the page
   document.querySelector('#book-'+id).remove();;
 
+};
+
+const toggleRead = function(button) {
+  let book = library[button.id];
+
+  if (book.read == true) {
+    button.style.color = 'red';
+    book.read = false;
+  } else if (book.read == false) {
+    button.style.color = 'green';
+    book.read = true;
+  }
 };
 // FUNCTIONS
 
