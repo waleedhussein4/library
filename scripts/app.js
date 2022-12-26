@@ -10,11 +10,11 @@ document.getElementById('add').addEventListener('click', function () {
   generateBook();
 });
 
-document.getElementsByClassName('remove').array.forEach(button => {
+const addRemoveListener = function(button) {
   button.addEventListener('click', function () {
     removeBook(button.id);
   });
-});
+}
 // LISTENERS
 
 
@@ -27,6 +27,8 @@ function Book (title, author) {
   this.id = index++;
 
 }
+
+Book.prototype.read = false;
 // OBJECTS
 
 
@@ -54,7 +56,7 @@ const createBookElement = function (book) {
   // create book div
   const div = document.createElement('div');
   div.className = 'book';
-  div.dataset.id = book.id;
+  div.id = 'book-' + book.id;
 
   // create title paragraph
   const titleElement = document.createElement('p');
@@ -69,18 +71,24 @@ const createBookElement = function (book) {
   // create id paragraph
   const idElement = document.createElement('p');
   idElement.className = 'id';
-  idElement.innerText = book.id;
+  idElement.innerText = 'ID: ' + book.id;
 
   // create remove button
   const buttonElement = document.createElement('button');
   buttonElement.id = book.id;
   buttonElement.classList.add('remove');
   buttonElement.innerText = 'Remove';
+  addRemoveListener(buttonElement);
+
+  // create read paragraph
+  const readElement = document.createElement('button');
+  readElement.id = book.id;
+  buttonElement
 
   div.appendChild(titleElement);
   div.appendChild(authorElement);
   div.appendChild(buttonElement);
-  div.dataset.id = book.id;
+  div.appendChild(idElement);
 
   container[0].appendChild(div);
 
@@ -88,7 +96,11 @@ const createBookElement = function (book) {
 
 const removeBook = function (id) {
   // remove the book from the library array
+  library.splice(id, 1);
+
   // remove the book from the page
+  document.querySelector('#book-'+id).remove();;
+
 };
 // FUNCTIONS
 
