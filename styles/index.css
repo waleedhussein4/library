@@ -73,3 +73,30 @@ body {
     height: 2em;
     padding: auto;
 }
+
+.remove {
+    border: none;
+    background: none;
+    width: 100%;
+    padding: 10px;
+    border-radius: 6px;
+    background-color: lightgray;
+}
+
+.remove:hover {
+    filter: brightness(85%);
+    cursor: pointer;
+}
+
+.read {
+    border: none;
+    background: none;
+    width: 100%;
+    padding: 10px;
+    border-radius: 6px;
+}
+
+.read:hover {
+    filter: brightness(85%);
+    cursor: pointer;
+}
