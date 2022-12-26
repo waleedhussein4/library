@@ -52,11 +52,8 @@ const generateBook = function () {
 };
 
 function addBookToLibrary (book) {
-
   library[book.id] = book;
   createBookElement(book);
-  console.log(library);
-
 };
 
 const createBookElement = function (book) {
@@ -96,6 +93,7 @@ const createBookElement = function (book) {
   readElement.id = book.id;
   readElement.classList.add('read');
   readElement.innerText = 'NOT READ';
+  readElement.style.backgroundColor = '#ff9c9c';
   addReadListener(readElement);
 
   div.appendChild(titleElement);
@@ -121,13 +119,13 @@ const toggleRead = function(button) {
   let book = library[button.id];
 
   if (book.read == true) {
-    button.style.color = 'red';
+    button.style.backgroundColor = '#ff9c9c';
+    button.innerText = 'NOT READ';
     book.read = false;
   } else if (book.read == false) {
-    button.style.color = 'green';
+    button.style.backgroundColor = 'lightgreen';
+    button.innerText = 'READ'
     book.read = true;
   }
 };
 // FUNCTIONS
-
-console.log(library);
