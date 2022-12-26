@@ -1,10 +1,18 @@
-:root {
+@font-face {
+    font-family: source;
+    src: url(../fonts/Source_Code_Pro/SourceCodePro-VariableFont_wght.ttf);
+}
 
+:root {
+    --font: source;
+
+    font-family: var(--font);
 }
 
 * {
     margin: 0;
     padding: 0;
+    font-family: var(--font);
 }
 
 html {
