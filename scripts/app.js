@@ -46,14 +46,8 @@ const generateBook = function () {
   let title = prompt("Enter TITLE");
   let author = prompt("Enter AUTHOR");
   let book = new Book(title, author);
-  addBookToLibrary(book);
 
-  // book.store.call();
-};
-
-function addBookToLibrary (book) {
-  library[book.id] = book;
-  createBookElement(book);
+  book.store();
 };
 
 const createBookElement = function (book) {
