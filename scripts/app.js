@@ -83,12 +83,14 @@ const createBookElement = function (book) {
   // create read paragraph
   const readElement = document.createElement('button');
   readElement.id = book.id;
-  buttonElement
+  readElement.classList.add('read');
+  readElement.innerText = 'NOT READ';
 
   div.appendChild(titleElement);
   div.appendChild(authorElement);
-  div.appendChild(buttonElement);
   div.appendChild(idElement);
+  div.appendChild(buttonElement);
+  div.appendChild(readElement);
 
   container[0].appendChild(div);
 
