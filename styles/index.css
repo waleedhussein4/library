@@ -1,0 +1,44 @@
+:root {
+
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    height: 100vh;
+}
+
+body {
+    height: 100%;
+}
+
+.container {
+    height: 1fr;
+    background-color: whitesmoke;
+
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 20px;
+}
+
+
+
+/* BOOK */
+.book {
+    border: 2px solid black;
+    border-radius: 6px;
+    padding: 10px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.title {
+    font-weight: bold;
+    font-size: 1.2em;
+}
